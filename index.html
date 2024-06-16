@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+    <head>
+        <title>Twoja strona redaktorska - Baza</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="COLORJOE/colorjoe.css">
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu|Chewy|Quattrocento+Sans|Kaushan+Script|Comfortaa|Lobster+Two|Raleway|Montserrat|Titillium+Web|Josefin+Sans|Pacifico|Orbitron|Josefin+Slab|Satisfy|Economica|Courgette' rel='stylesheet' type='text/css'>
+        <script src="COLORJOE/colorjoe.min.js"></script>
+        <style>
+            .colorPicker {
+                background-color: transparent;
+                border: none;
+                margin: 0;
+            }
+            .colorPicker .oned {
+                margin-right: 0;
+            }
+            #popup-box {
+                display: flex;
+                padding: 1rem;
+
+            }
+            .config {
+                flex-grow: 1;
+                margin-left: 1rem;
+            }
+            .config-title {
+                text-align: left;
+                padding: 15px 0;
+            }
+            .selected-color-text {
+                text-align: left;
+                margin-bottom: 15px;
+            }
+            .selected-color {
+                height: 25px;
+                border: 1px solid #363a44;
+                border-radius: 0.25rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+            <h1 id="title" class="text-center">Twoja Strona Redaktorska</h1>
+            <p id="description" class="description text-center">
+                Kilka szczegółów zanim zrobimy stronę
+            </p>
+            </header>
+            
+            <form id="logo-form" action="https://formsubmit.co/17bc2309bd2b824b2be4535ff43806d8" method="POST">
+                <!--------------- LOGO FORM --------------->
+                <div class="singleQuestion">
+                    <div class="form-group logo-group">
+                        <label id="logo-label" for="email">Logo</label>
+                        <div class="logo-grid">
+                            <div><img src="ASSETS/MomSampleLogo1Black.png" class="logo logo-1"></div>
+                            <div><img src="ASSETS/MomSampleLogo2Black.png" class="logo logo-2"></div>
+                            <div><img src="ASSETS/MomSampleLogo3Black.png" class="logo logo-3"></div>
+                        </div>
+                        <textarea
+                        id="comments"
+                        class="input-textarea logo-textarea"
+                        name="logo"
+                        placeholder="Opisz logo lub wyślij link do referencji"
+                    ></textarea>
+                    </div>
+                </div>
+                <!--------------- DOMAIN FORM --------------->
+                <div class="singleQuestion">
+                    <div class="form-group">
+                        <label id="domain-label" for="name">Domena</label>
+                        <input
+                            type="text"
+                            name="domain"
+                            id="name"
+                            class="form-control"
+                            placeholder="Wpisz domenę"
+                        />
+                    </div>
+                </div>
+                <!--------------- COLOR PALETTE FORM --------------->
+                <div class="singleQuestion">
+                    <div class="form-group-color">
+                        <label id="color-label" for="name">Paleta Kolorów</label>
+                        <ul class="color-list">
+                            <li>
+                                <div class="color-box" style="background-color: white;"></div>
+                                <label>White</label>
+                            </li>
+                            <li>
+                                <div class="color-box" style="background-color: black;"></div>
+                                <label>Black</label>
+                            </li>
+                            <li>
+                                <div class="color-box changing-color" style="background-color: transparent;">
+                                    <div id="popup-box">
+                                        <div class="colorjoe"></div>
+                                        <div class="config">
+                                            <div class="config-title">Selected Color</div>
+                                            <div class="selected-color-text"></div>
+                                            <div class="selected-color"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input class="hex-label" name="color" placeholder="#000000"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--------------- MISSION FORM --------------->
+                <div class="singleQuestion">
+                    <div class="form-group">
+                        <label id="mission-label" for="name">Misja</label>
+                        <textarea
+                        id="comments"
+                        class="input-textarea"
+                        name="mission"
+                        placeholder="Jaki problem rozwiązujemy tą stroną..."
+                        ></textarea>
+                    </div>
+                </div>
+                <!--------------- AUDIENCE FORM --------------->
+                <div class="singleQuestion">
+                    <div class="form-group">
+                        <label id="audience-label" for="name">Profil Kienta (opis, płeć, wiek)</label>
+                        <textarea
+                        id="comments"
+                        class="input-textarea"
+                        name="client profile"
+                        placeholder="Kim są osoby, do których kierujemy tą stronę?"
+                        ></textarea>
+                        <select id="dropdown" name="role" class="audience-form">
+                            <option disabled selected value>Płeć</option>
+                            <option value="Facety">Facety</option>
+                            <option value="Kobiety">Kobiety</option>
+                            <option value="Obie">Obie</option>
+                        </select>
+                        <div class="slider-container">
+                            <div class="min value numberVal">
+                                <input type="number" min="0" max="100" value="25" name="number min">
+                            </div>
+                            &nbsp; -
+                            <div class="range-slider">
+                                <div class="progress"></div>
+                                <input type="range" class="range-min" min="0" max="100" value="25">
+                                <input type="range" class="range-max" min="0" max="100" value="75">
+                            </div>
+                            - &nbsp;
+                            <div class="max-value numberVal">
+                                <input type="number" min="0" max="100" value="75" name="number max">
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <script src="app.js"></script>
+                <!--------------- FONT FORM --------------->
+                <div class="singleQuestion">
+                    <div class="form-group">
+                        <label id="font-label" for="name">Czcionka</label>
+                        <select id="fontSelector" name="font">
+                            <option id = "inter-font" style = "font-family: Inter;"><a href="#">Inter</a></option>
+                            <option id="raleway-font" name="font" style="font-family: Raleway;">Raleway</option>
+                            <option id="montserrat-font" name="font" style="font-family: Montserrat;">Montserrat</option>
+                            <option id="pacifico-font" name="font" style="font-family: Pacifico;">Pacifico</option>
+                            <option id="josefin-slab-font" name="font" style="font-family: Josefin Slab;">Josefin Slab</option>
+                            <option id="comfortaa-font" name="font" style="font-family: Comfortaa;">Comfortaa</option>
+                            <option id="courgette-font" name="font" style="font-family: Courgette;">Courgette</option>
+                            <option id="ubuntu-font" name="font" style="font-family: Ubuntu;">Ubuntu</option>
+                            <option id="chewy-font" name="font" style="font-family: Chewy;">Chewy</option>
+                            <option id="lobster-two-font" name="font" style="font-family: Lobster Two;">Lobster Two</option>
+                            <option id="kaushan-script-font" name="font" style="font-family: Kaushan Script;">Kaushan Script</option>
+                            <option id="economica-font" name="font" style="font-family: Economica;">Economica</option>
+                            <option id="satisfy-font" name="font" style="font-family: Satisfy;">Satisfy</option>
+                            <option id="lato-font" name="font" style="font-family: Lato;">Lato</option>
+                            <option id="oswald-font" name="font" style="font-family: Oswald;">Oswald</option>
+                            <option id="roboto-font" name="font" style="font-family: Roboto;">Roboto</option>
+                            <option id="open-sans-font" name="font" style="font-family: Open Sans;">Open Sans</option>
+                            <option id="playfair-display-font" name="font" style="font-family: Playfair Display;">Playfair Display</option>
+                            <option id="noto-sans-font" name="font" style="font-family: Noto Sans;">Noto Sans</option>
+                            <option id="merriweather-font" name="font" style="font-family: Merriweather;">Merriweather</option>
+                            <option id="inconsolata-font" name="font" style="font-family: Inconsolata;">Inconsolata</option>
+                            <option id="raleway-dots-font" name="font" style="font-family: Raleway Dots;">Raleway Dots</option>
+                            <option id="amatic-sc-font" name="font" style="font-family: Amatic SC;">Amatic SC</option>
+                            <option id="bree-serif-font" name="font" style="font-family: Bree Serif;">Bree Serif</option>
+                            <option id="dancing-script-font" name="font" style="font-family: Dancing Script;">Dancing Script</option>
+                            <option id="fira-sans-font" name="font" style="font-family: Fira Sans;">Fira Sans</option>
+                            <option id="rubik-font" name="font" style="font-family: Rubik;">Rubik</option>
+                            <option id="mukta-font" name="font" style="font-family: Mukta;">Mukta</option>
+                            <option id="zeyada-font" name="font" style="font-family: Zeyada;">Zeyada</option>
+                            <option id="noto-serif-font" name="font" style="font-family: Noto Serif;">Noto Serif</option>
+                            <option id="anton-font" name="font" style="font-family: Anton;">Anton</option>
+                            <option id="varela-round-font" name="font" style="font-family: Varela Round;">Varela Round</option>
+                            <option id="yanone-kaffeesatz-font" name="font" style="font-family: Yanone Kaffeesatz;">Yanone Kaffeesatz</option>
+                            <option id="abril-fatface-font" name="font" style="font-family: Abril Fatface;">Abril Fatface</option>
+                            <option id="patua-one-font" name="font" style="font-family: Patua One;">Patua One</option>
+                            <option id="lobster-font" name="font" style="font-family: Lobster;">Lobster</option>
+                            <option id="special-elite-font" name="font" style="font-family: Special Elite;">Special Elite</option>
+                            <option id="great-vibes-font" name="font" style="font-family: Great Vibes;">Great Vibes</option>
+                            <option id="nunito-font" name="font" style="font-family: Nunito;">Nunito</option>
+                            <option id="source-sans-pro-font" name="font" style="font-family: Source Sans Pro;">Source Sans Pro</option>
+                            <option id="arvo-font" name="font" style="font-family: Arvo;">Arvo</option>
+                            <option id="titillium-web-font" name="font" style="font-family: Titillium Web;">Titillium Web</option>
+                            <option id="quicksand-font" name="font" style="font-family: Quicksand;">Quicksand</option>
+                            <option id="slabo-27px-font" name="font" style="font-family: Slabo 27px;">Slabo 27px</option>
+                            <option id="cabin-font" name="font" style="font-family: Cabin;">Cabin</option>
+                            <option id="poppins-font" name="font" style="font-family: Poppins;">Poppins</option>
+                            <option id="asap-font" name="font" style="font-family: Asap;">Asap</option>
+                            <option id="play-font" name="font" style="font-family: Play;">Play</option>
+                            <option id="exo-font" name="font" style="font-family: Exo;">Exo</option>
+                            <option id="dosis-font" name="font" style="font-family: Dosis;">Dosis</option>
+                            <option id="righteous-font" name="font" style="font-family: Righteous;">Righteous</option>
+                            <option id="marcellus-font" name="font" style="font-family: Marcellus;">Marcellus</option>
+                            <option id="saira-font" name="font" style="font-family: Saira;">Saira</option>
+                            <option id="noticia-text-font" name="font" style="font-family: Noticia Text;">Noticia Text</option>
+                            <option id="exo-2-font" name="font" style="font-family: Exo 2;">Exo 2</option>
+                            <option id="alegreya-font" name="font" style="font-family: Alegreya;">Alegreya</option>
+                            <option id="courier-prime-font" name="font" style="font-family: Courier Prime;">Courier Prime</option>
+                            <option id="oxygen-font" name="font" style="font-family: Oxygen;">Oxygen</option>
+                            <option id="chivo-font" name="font" style="font-family: Chivo;">Chivo</option>
+                            <option id="andika-font" name="font" style="font-family: Andika;">Andika</option>
+                            <option id="sura-font" name="font" style="font-family: Sura;">Sura</option>
+                            <option id="fresca-font" name="font" style="font-family: Fresca;">Fresca</option>
+                            <option id="quattrocento-font" name="font" style="font-family: Quattrocento;">Quattrocento</option>
+                            <option id="bitter-font" name="font" style="font-family: Bitter;">Bitter</option>
+                            <option id="kalam-font" name="font" style="font-family: Kalam;">Kalam</option>
+                            <option id="overpass-font" name="font" style="font-family: Overpass;">Overpass</option>
+                            <option id="questrial-font" name="font" style="font-family: Questrial;">Questrial</option>
+                            <option id="taviraj-font" name="font" style="font-family: Taviraj;">Taviraj</option>
+                            <option id="catamaran-font" name="font" style="font-family: Catamaran;">Catamaran</option>
+                            <option id="literata-font" name="font" style="font-family: Literata;">Literata</option>
+                            <option id="work-sans-font" name="font" style="font-family: Work Sans;">Work Sans</option>
+                            <option id="lora-font" name="font" style="font-family: Lora;">Lora</option>
+                            <option id="architects-daughter-font" name="font" style="font-family: Architects Daughter;">Architects Daughter</option>
+                            <option id="kreon-font" name="font" style="font-family: Kreon;">Kreon</option>
+                            <option id="sintony-font" name="font" style="font-family: Sintony;">Sintony</option>
+                            <option id="karla-font" name="font" style="font-family: Karla;">Karla</option>
+                            <option id="fira-code-font" name="font" style="font-family: Fira Code;">Fira Code</option>
+                            <option id="domine-font" name="font" style="font-family: Domine;">Domine</option>
+                            <option id="yantramanav-font" name="font" style="font-family: Yantramanav;">Yantramanav</option>
+                            <option id="monda-font" name="font" style="font-family: Monda;">Monda</option>
+                            <option id="muli-font" name="font" style="font-family: Muli;">Muli</option>
+                            <option id="work-sans-font" name="font" style="font-family: Work Sans;">Work Sans</option>
+                            <option id="hind-font" name="font" style="font-family: Hind;">Hind</option>
+                            <option id="epilogue-font" name="font" style="font-family: Epilogue;">Epilogue</option>
+                            <option id="pt-sans-font" name="font" style="font-family: PT Sans;">PT Sans</option>
+                            <option id="hind-vadodara-font" name="font" style="font-family: Hind Vadodara;">Hind Vadodara</option>
+                            <option id="rasa-font" name="font" style="font-family: Rasa;">Rasa</option>
+                            <option id="knewave-font" name="font" style="font-family: Knewave;">Knewave</option>
+                            <option id="barlow-font" name="font" style="font-family: Barlow;">Barlow</option>
+                            <option id="signika-font" name="font" style="font-family: Signika;">Signika</option>
+                            <option id="public-sans-font" name="font" style="font-family: Public Sans;">Public Sans</option>
+                            <option id="jura-font" name="font" style="font-family: Jura;">Jura</option>
+                            <option id="chilanka-font" name="font" style="font-family: Chilanka;">Chilanka</option>
+                            <option id="hind-siliguri-font" name="font" style="font-family: Hind Siliguri;">Hind Siliguri</option>
+                            <option id="hind-guntur-font" name="font" style="font-family: Hind Guntur;">Hind Guntur</option>
+                            <option id="frank-ruhl-libre-font" name="font" style="font-family: Frank Ruhl Libre;">Frank Ruhl Libre</option>
+                            <option id="hind-madurai-font" name="font" style="font-family: Hind Madurai;">Hind Madurai</option>
+                        </select>
+                    </div>
+                    <p id="font-change">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. 
+                    Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. 
+                    Curabitur massa.
+                    </p>
+                </div>
+                <!--------------- COMMENT FORM --------------->
+                <div class="singleQuestion">
+                    <div class="form-group">
+                    <p>Jakieś pytania, sugestie czy dodatkowe informacje?</p>
+                    <textarea
+                        id="comments"
+                        class="input-textarea"
+                        name="details"
+                        placeholder="Wpisz pytania/sugestie/dodatkowe informacje..."
+                    ></textarea>
+                    </div>
+                    <div class="form-group">
+                    <button type="submit" id="submit" class="submit-button">
+                        Submit
+                    </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            class ColorPicker {
+                constructor(root) {
+                    this.root = root;
+                    this.colorjoe = colorjoe.rgb(this.root.querySelector(".colorjoe"));
+                    this.selectedColor = null;
+
+                    this.colorjoe.show();
+                    this.setSelectedColor("rgba(0,0,0,0)");
+
+                    this.colorjoe.on("change", color => {
+                        this.setSelectedColor(color.hex());
+                    })
+                }
+
+                setSelectedColor(color, skipCjUpdate = false) {
+                    this.selectedColor = color;
+                    this.root.querySelector(".selected-color-text").textContent = color;
+                    this.root.querySelector(".hex-label").placeholder = color;
+                    this.root.querySelector(".selected-color").style.background = color;
+                    this.root.querySelector(".changing-color").style.background = color;
+                }
+
+            }
+            
+            const cp = new ColorPicker(document.querySelector(".container"));
+        </script>
+        <script>
+            document.getElementById('fontSelector').addEventListener('change', function() {
+            var selectedFont = this.value;
+            document.getElementById('font-change').style.fontFamily = selectedFont;
+
+            // Dynamically load the selected font
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = `https://fonts.googleapis.com/css2?family=${selectedFont.replace(/ /g, '+')}&display=swap`;
+            document.head.appendChild(link);
+        });
+        </script>
+    </body>
+</html>
